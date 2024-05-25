@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://rohs0t7a1q8g"]
+[gd_scene load_steps=4 format=3 uid="uid://rohs0t7a1q8g"]
 
 [ext_resource type="PackedScene" uid="uid://wegljpb1j3bi" path="res://scenes/player.tscn" id="1_a2b2v"]
+[ext_resource type="PackedScene" uid="uid://siwpvicdftx6" path="res://scenes/enemy.tscn" id="2_njbsh"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ngpe5"]
 
@@ -13,6 +14,11 @@ position = Vector2(0, 24)
 shape = SubResource("WorldBoundaryShape2D_ngpe5")
 
 [node name="Player" parent="." instance=ExtResource("1_a2b2v")]
+scale = Vector2(0.977775, 0.977775)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -222)
+
+[node name="Enemy" parent="." instance=ExtResource("2_njbsh")]
+position = Vector2(223, 0)
+scale = Vector2(5.22617, 5.22617)

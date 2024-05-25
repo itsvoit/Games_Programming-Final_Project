@@ -1,7 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://wegljpb1j3bi"]
+[gd_scene load_steps=12 format=3 uid="uid://wegljpb1j3bi"]
 
 [ext_resource type="Texture2D" uid="uid://ixyj755qk5vv" path="res://assets/icon.svg" id="1_36ag4"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_qagni"]
+[ext_resource type="PackedScene" uid="uid://smsnbk2vtu5g" path="res://scenes/health.tscn" id="2_5t50w"]
+[ext_resource type="PackedScene" uid="uid://buexi1thq5fbt" path="res://scenes/hitbox.tscn" id="3_7whgn"]
+[ext_resource type="Texture2D" uid="uid://cs4hvrlb1w6iw" path="res://assets/dev_assets/sprites/coin.png" id="5_wbssw"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_gvawo"]
+radius = 35.0
+height = 80.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tec7x"]
 animations = [{
@@ -17,12 +24,94 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_jnxuu"]
 radius = 63.0
 
+[sub_resource type="Animation" id="Animation_ugesq"]
+resource_name = "light_attack"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitboxSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_mrw7j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("hitboxSprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jnpqf"]
+_data = {
+"RESET": SubResource("Animation_mrw7j"),
+"light_attack": SubResource("Animation_ugesq")
+}
+
 [node name="Player" type="CharacterBody2D"]
 position = Vector2(0, -64)
 script = ExtResource("1_qagni")
+
+[node name="Health" parent="." instance=ExtResource("2_5t50w")]
+
+[node name="Hitbox" parent="." instance=ExtResource("3_7whgn")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(102, 1)
+shape = SubResource("CapsuleShape2D_gvawo")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_tec7x")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_jnxuu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jnpqf")
+}
+
+[node name="hitboxSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(100.5, 4.50001)
+scale = Vector2(7.78571, 7.78571)
+texture = ExtResource("5_wbssw")
+region_enabled = true
+region_rect = Rect2(80.7565, 1.30943, 14.0198, 14.3384)
