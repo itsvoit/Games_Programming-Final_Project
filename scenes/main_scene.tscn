@@ -1,11 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://rohs0t7a1q8g"]
+[gd_scene load_steps=6 format=3 uid="uid://rohs0t7a1q8g"]
 
+[ext_resource type="Texture2D" uid="uid://dpf37yfpu2ng3" path="res://assets/environment/night-forest/background_0.png" id="1_4e6la"]
 [ext_resource type="PackedScene" uid="uid://wegljpb1j3bi" path="res://scenes/player.tscn" id="1_a2b2v"]
-[ext_resource type="PackedScene" uid="uid://siwpvicdftx6" path="res://scenes/enemy.tscn" id="2_njbsh"]
+[ext_resource type="Texture2D" uid="uid://dbtx57w1t0nk4" path="res://assets/environment/night-forest/background_1.png" id="2_w2gp4"]
+[ext_resource type="Texture2D" uid="uid://chu30jil5tej7" path="res://assets/environment/night-forest/background_2.png" id="3_3t2mp"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ngpe5"]
 
 [node name="Main_scene" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scale = Vector2(2, 2)
+transform = Transform2D(2, 0, 0, 2, 0, 0)
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(288, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture = ExtResource("1_4e6la")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.5, 0.5)
+motion_mirroring = Vector2(288, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2"]
+texture = ExtResource("2_w2gp4")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(288, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3"]
+texture = ExtResource("3_3t2mp")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -16,9 +41,7 @@ shape = SubResource("WorldBoundaryShape2D_ngpe5")
 [node name="Player" parent="." instance=ExtResource("1_a2b2v")]
 scale = Vector2(0.977775, 0.977775)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(0, -222)
-
-[node name="Enemy" parent="." instance=ExtResource("2_njbsh")]
-position = Vector2(223, 0)
-scale = Vector2(5.22617, 5.22617)
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(-3.06819, 6.13638)
+scale = Vector2(1.02273, 1.02273)
+zoom = Vector2(0.2, 0.2)
