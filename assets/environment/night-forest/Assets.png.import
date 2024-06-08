@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chu30jil5tej7"
-path="res://.godot/imported/Background_2.png-6e975b0ba8b934ca08d63a4a9a58484f.ctex"
+uid="uid://ipwn4ga1ybmw"
+path="res://.godot/imported/Assets.png-8b9584501cd06ffd12b002c8bd3e7918.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/night-forest/Background_2.png"
-dest_files=["res://.godot/imported/Background_2.png-6e975b0ba8b934ca08d63a4a9a58484f.ctex"]
+source_file="res://assets/environment/night-forest/Assets.png"
+dest_files=["res://.godot/imported/Assets.png-8b9584501cd06ffd12b002c8bd3e7918.ctex"]
 
 [params]
 

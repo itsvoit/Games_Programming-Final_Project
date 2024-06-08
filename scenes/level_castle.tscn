@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://blf6oxmpin7n8"]
+
+[ext_resource type="TileSet" uid="uid://b33fd84ekvg0" path="res://assets/Tilesets/castle_1.tres" id="1_j4d24"]
+[ext_resource type="PackedScene" uid="uid://wegljpb1j3bi" path="res://scenes/player.tscn" id="4_3esib"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Tilemap" type="TileMap" parent="."]
+tile_set = ExtResource("1_j4d24")
+format = 2
+layer_0/name = "Mid"
+layer_0/tile_data = PackedInt32Array(-196598, 2, 22, -131062, 2, 21, -65526, 2, 22, 10, 2, 23, -262134, 2, 21, -393206, 2, 21, -327670, 2, 22, -524278, 2, 21, -458742, 2, 22, -589814, 2, 20, -589813, 65538, 20, -524277, 65538, 21, -458741, 65538, 22, -393205, 65538, 22, -327669, 65538, 22, -262133, 65538, 22, -196597, 65538, 22, -131061, 65538, 22, -65525, 65538, 22, 11, 65538, 23, 8, 65538, 8, 7, 65538, 8, 6, 65538, 8, 5, 65538, 8, 4, 65538, 8, 3, 65538, 8, 2, 65538, 8, 1, 65538, 8, 0, 65538, 8, 65535, 65538, 8, 65534, 65538, 8, 65533, 65538, 8, 65532, 65538, 8, 65531, 65538, 8, 65530, 65538, 8, 65529, 65538, 8, 65528, 65538, 8, 65527, 65538, 8, 65526, 65538, 8, 65525, 65538, 8, 65524, 65538, 8)
+
+[node name="Player" parent="." instance=ExtResource("4_3esib")]
+position = Vector2(0, -95)
+collision_layer = 8
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -74)
+zoom = Vector2(2, 2)

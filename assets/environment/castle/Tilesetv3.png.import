@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chu30jil5tej7"
-path="res://.godot/imported/Background_2.png-6e975b0ba8b934ca08d63a4a9a58484f.ctex"
+uid="uid://c8ljrfdy1ikf4"
+path="res://.godot/imported/Tilesetv3.png-2d93cbbb4ce3d42d5a2d357c4437c408.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/night-forest/Background_2.png"
-dest_files=["res://.godot/imported/Background_2.png-6e975b0ba8b934ca08d63a4a9a58484f.ctex"]
+source_file="res://assets/environment/castle/Tilesetv3.png"
+dest_files=["res://.godot/imported/Tilesetv3.png-2d93cbbb4ce3d42d5a2d357c4437c408.ctex"]
 
 [params]
 

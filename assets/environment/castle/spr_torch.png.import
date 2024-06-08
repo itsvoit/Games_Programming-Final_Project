@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://chu30jil5tej7"
-path="res://.godot/imported/Background_2.png-6e975b0ba8b934ca08d63a4a9a58484f.ctex"
+uid="uid://ldbykrft03y1"
+path="res://.godot/imported/spr_torch.png-08968cd9ed6e37a63203ba0688b54e1e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/night-forest/Background_2.png"
-dest_files=["res://.godot/imported/Background_2.png-6e975b0ba8b934ca08d63a4a9a58484f.ctex"]
+source_file="res://assets/environment/castle/spr_torch.png"
+dest_files=["res://.godot/imported/spr_torch.png-08968cd9ed6e37a63203ba0688b54e1e.ctex"]
 
 [params]
 
