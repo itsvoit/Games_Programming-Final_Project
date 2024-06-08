@@ -1,11 +1,15 @@
-[gd_scene load_steps=36 format=3 uid="uid://bh2xmw3yowske"]
+[gd_scene load_steps=47 format=3 uid="uid://bh2xmw3yowske"]
 
+[ext_resource type="PackedScene" uid="uid://smsnbk2vtu5g" path="res://scenes/utilities/health.tscn" id="1_5hvg0"]
 [ext_resource type="Texture2D" uid="uid://cgwkdwxtyveak" path="res://assets/enemies/Skeleton/Attack.png" id="1_bsdr5"]
+[ext_resource type="Script" path="res://scripts/enemy.gd" id="1_hvjur"]
 [ext_resource type="Texture2D" uid="uid://bpvu8s0eoi2n" path="res://assets/enemies/Skeleton/Shield.png" id="2_kyhxh"]
 [ext_resource type="Texture2D" uid="uid://80voj64n36w4" path="res://assets/enemies/Skeleton/Death.png" id="3_0fgo7"]
 [ext_resource type="Texture2D" uid="uid://b6ghdf2u2wjm3" path="res://assets/enemies/Skeleton/Take Hit.png" id="4_ojkjn"]
 [ext_resource type="Texture2D" uid="uid://cjbux0r0g16ok" path="res://assets/enemies/Skeleton/Idle.png" id="5_2vjwt"]
 [ext_resource type="Texture2D" uid="uid://btkj52tvpchmp" path="res://assets/enemies/Skeleton/Walk.png" id="6_qt8pq"]
+[ext_resource type="Script" path="res://scripts/hitbox.gd" id="7_gq5j1"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="8_o1cai"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ffoqb"]
 atlas = ExtResource("1_bsdr5")
@@ -146,7 +150,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_pv60j")
 }],
-"loop": true,
+"loop": false,
 "name": &"attack",
 "speed": 10.0
 }, {
@@ -163,7 +167,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_mjq24")
 }],
-"loop": true,
+"loop": false,
 "name": &"block",
 "speed": 5.0
 }, {
@@ -180,7 +184,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_v7vff")
 }],
-"loop": true,
+"loop": false,
 "name": &"death",
 "speed": 5.0
 }, {
@@ -197,9 +201,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ywjs3")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
-"speed": 5.0
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -236,8 +240,160 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_th0w7"]
+size = Vector2(28, 51)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l7t31"]
+size = Vector2(66, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_slgsu"]
+size = Vector2(28, 51)
+
+[sub_resource type="Animation" id="Animation_xvsof"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_rpb1i"]
+resource_name = "attack"
+length = 0.9
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"attack", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gsj2l"]
+resource_name = "death"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"death", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pl3g4"]
+_data = {
+"RESET": SubResource("Animation_xvsof"),
+"attack": SubResource("Animation_rpb1i"),
+"death": SubResource("Animation_gsj2l")
+}
+
+[node name="Skeleton" type="Node2D"]
+script = ExtResource("1_hvjur")
+
+[node name="Health" parent="." instance=ExtResource("1_5hvg0")]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -26)
 sprite_frames = SubResource("SpriteFrames_k41dm")
-animation = &"attack"
-frame_progress = 0.740241
+animation = &"hurt"
+autoplay = "idle"
+frame = 3
+frame_progress = 1.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+position = Vector2(0, -25.5)
+shape = SubResource("RectangleShape2D_th0w7")
+
+[node name="Hitbox" type="Area2D" parent="."]
+script = ExtResource("7_gq5j1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2(32, -25)
+shape = SubResource("RectangleShape2D_l7t31")
+disabled = true
+
+[node name="Hurtbox" type="Area2D" parent="."]
+script = ExtResource("8_o1cai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
+position = Vector2(0, -25.5)
+shape = SubResource("RectangleShape2D_slgsu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_pl3g4")
+}
