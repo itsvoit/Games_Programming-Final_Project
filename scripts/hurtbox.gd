@@ -13,9 +13,7 @@ func _on_area_entered(hitbox: Hitbox):
 	if hitbox == null or hitbox.owner == owner:
 		return
 	
-	print("Hit by a Hitbox of=" + str(hitbox.owner))
-	print("Owner=" + str(owner))
 	if owner.has_method("take_damage"):
-		print("Owner has method take damage")
+		print(str(owner) + " hit by " + str(hitbox.owner) + " for " + str(hitbox.damage))
 		owner.take_damage(hitbox.damage)
 

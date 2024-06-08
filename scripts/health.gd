@@ -25,10 +25,10 @@ func take_damage(value):
 		return false
 	health -= (value - armor) * (1 - resistance)
 	emit_signal("taken_damage", value)
-	print("Entity taken damage: " + str(value))
+	print(str(owner) + " taken " + str(value) + " damage")
 	if health == 0:
 		emit_signal("entity_died")
-		print("Entity died")
+		print(str(owner) + " died")
 	return true
 
 # heal	

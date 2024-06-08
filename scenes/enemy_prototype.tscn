@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bvnf53rpbv2d2" path="res://assets/dev_assets/sprites/slime_green.png" id="1_4xf7v"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="2_2yj1d"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_nwnur"]
-[ext_resource type="PackedScene" uid="uid://smsnbk2vtu5g" path="res://scenes/health.tscn" id="5_5uknj"]
+[ext_resource type="PackedScene" uid="uid://smsnbk2vtu5g" path="res://scenes/utilities/health.tscn" id="5_5uknj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h611b"]
 atlas = ExtResource("1_4xf7v")

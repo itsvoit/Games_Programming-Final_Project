@@ -7,3 +7,6 @@ extends Area2D
 
 func _init():
 	collision_layer = 2
+
+func _debug():
+	print("Hitbox - " + str(get_parent()))

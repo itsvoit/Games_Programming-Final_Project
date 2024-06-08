@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://rohs0t7a1q8g"]
+
+[ext_resource type="TileSet" uid="uid://di6twf0fhokdg" path="res://assets/Tilesets/night.tres" id="1_2ah0h"]
+[ext_resource type="PackedScene" uid="uid://wegljpb1j3bi" path="res://scenes/player.tscn" id="1_a2b2v"]
+[ext_resource type="PackedScene" uid="uid://siwpvicdftx6" path="res://scenes/enemy_prototype.tscn" id="3_5tso6"]
+
+[node name="Main_scene" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource("1_2ah0h")
+format = 2
+layer_0/tile_data = PackedInt32Array(196597, 131073, 0, 196598, 196609, 0, 196599, 262145, 0, 196600, 131073, 0, 196601, 196609, 0, 196602, 262145, 0, 196603, 131073, 0, 196604, 196609, 0, 196605, 262145, 0, 196606, 131073, 0, 196607, 196609, 0, 131072, 262145, 0, 131073, 131073, 0, 131074, 196609, 0, 131075, 262145, 0, 131076, 131073, 0, 131077, 196609, 0, 131078, 262145, 0, 131079, 131073, 0, 131080, 196609, 0, 131081, 262145, 0, 131082, 131073, 0, 131083, 196609, 0, 131084, 262145, 0, 131085, 131073, 0, 131086, 196609, 0, 131087, 262145, 0, 196594, 131073, 0, 196595, 196609, 0, 196596, 262145, 0, 196591, 131073, 0, 196592, 196609, 0, 196593, 262145, 0, 196588, 131073, 0, 196589, 196609, 0, 196590, 262145, 0, 131088, 131073, 0, 131089, 196609, 0, 131090, 262145, 0)
+
+[node name="Player" parent="." instance=ExtResource("1_a2b2v")]
+position = Vector2(0, -69)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position = Vector2(0, -28.5)
+zoom = Vector2(2, 2)
+
+[node name="EnemyPrototype" parent="." instance=ExtResource("3_5tso6")]
+position = Vector2(78, 26)
+scale = Vector2(4.52, 4.52)
