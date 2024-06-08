@@ -7,15 +7,13 @@ func _init() -> void:
 	collision_mask = 2
 
 func _ready() -> void:
-	print("Hurtbox" + str(get_parent()))
-	connect("body_entered", _on_body_entered)
+	connect("area_entered", _on_area_entered)
 
-func _on_body_entered(hitbox: Hitbox):
-	print("Hitbox=" + str(hitbox))
-	if hitbox == null:
+func _on_area_entered(hitbox: Hitbox):
+	if hitbox == null or hitbox.owner == owner:
 		return
 	
-	print("Hit by a Hitbox")
 	if owner.has_method("take_damage"):
+		print(str(owner) + " hit by " + str(hitbox.owner) + " for " + str(hitbox.damage))
 		owner.take_damage(hitbox.damage)
 

@@ -25,7 +25,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_ugesq"]
 resource_name = "light_attack"
-length = 0.5
+length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,7 +33,7 @@ tracks/0/path = NodePath("Hitbox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
+"times": PackedFloat32Array(0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -41,15 +41,29 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Hitbox")
+tracks/1/path = NodePath("AnimatedSprite2D")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
+"args": [&"attack", 1.0, false],
+"method": &"play"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
 "args": [],
-"method": &"_debug"
+"method": &"attack_anim_finished"
 }]
 }
 
@@ -70,19 +84,19 @@ script = ExtResource("1_qagni")
 [node name="Health" parent="." instance=ExtResource("2_5t50w")]
 
 [node name="Hitbox" parent="." instance=ExtResource("3_7whgn")]
+damage = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(17, 39)
-scale = Vector2(0.745478, 0.699408)
+scale = Vector2(0.745, 0.699)
 shape = SubResource("RectangleShape2D_oh61v")
 disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 40)
 sprite_frames = ExtResource("4_u76e3")
-animation = &"idle"
+animation = &"attack"
 autoplay = "idle"
-frame_progress = 0.839201
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

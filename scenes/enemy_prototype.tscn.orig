@@ -1,10 +1,14 @@
+<<<<<<< HEAD:scenes/enemy_prototype.tscn
+[gd_scene load_steps=12 format=3 uid="uid://siwpvicdftx6"]
+=======
 [gd_scene load_steps=13 format=3 uid="uid://siwpvicdftx6"]
+>>>>>>> dev:scenes/enemy.tscn
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_2gg2u"]
 [ext_resource type="Texture2D" uid="uid://bvnf53rpbv2d2" path="res://assets/dev_assets/sprites/slime_green.png" id="1_4xf7v"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="2_2yj1d"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="3_nwnur"]
-[ext_resource type="PackedScene" uid="uid://smsnbk2vtu5g" path="res://scenes/utilities/health.tscn" id="5_5uknj"]
+[ext_resource type="PackedScene" uid="uid://smsnbk2vtu5g" path="res://scenes/health.tscn" id="5_5uknj"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h611b"]
 atlas = ExtResource("1_4xf7v")
@@ -45,6 +49,8 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mreuu"]
 size = Vector2(8, 11)
 
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8h8jd"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5akcq"]
 size = Vector2(8, 11)
 
@@ -63,6 +69,10 @@ script = ExtResource("2_2yj1d")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_mreuu")
+
+[node name="Sprite2D" type="Sprite2D" parent="Hurtbox/CollisionShape2D"]
+scale = Vector2(-0.016, -0.022)
+texture = SubResource("NoiseTexture2D_8h8jd")
 
 [node name="Hitbox" type="Area2D" parent="."]
 script = ExtResource("3_nwnur")
