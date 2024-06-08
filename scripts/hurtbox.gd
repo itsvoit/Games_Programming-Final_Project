@@ -7,10 +7,9 @@ func _init() -> void:
 	collision_mask = 2
 
 func _ready() -> void:
-	print("Hurtbox" + str(get_parent()))
-	connect("body_entered", _on_body_entered)
+	connect("area_entered", _on_area_entered)
 
-func _on_body_entered(hitbox: Hitbox):
+func _on_area_entered(hitbox: Hitbox):
 	print("Hitbox=" + str(hitbox))
 	if hitbox == null:
 		return

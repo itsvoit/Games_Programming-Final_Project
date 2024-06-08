@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://wegljpb1j3bi"]
+[gd_scene load_steps=11 format=3 uid="uid://wegljpb1j3bi"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_qagni"]
 [ext_resource type="PackedScene" uid="uid://smsnbk2vtu5g" path="res://scenes/utilities/health.tscn" id="2_5t50w"]
@@ -7,6 +7,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oh61v"]
 size = Vector2(61.7054, 88.6464)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7u356"]
 
 [sub_resource type="Animation" id="Animation_mrw7j"]
 length = 0.001
@@ -52,6 +54,20 @@ tracks/1/keys = {
 "method": &"_debug"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimatedSprite2D")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"attack", 1.0, false],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jnpqf"]
 _data = {
@@ -77,12 +93,16 @@ scale = Vector2(0.745478, 0.699408)
 shape = SubResource("RectangleShape2D_oh61v")
 disabled = true
 
+[node name="Sprite2D" type="Sprite2D" parent="Hitbox/CollisionShape2D"]
+scale = Vector2(0.12, 0.17)
+texture = SubResource("NoiseTexture2D_7u356")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 40)
 sprite_frames = ExtResource("4_u76e3")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.839201
+frame_progress = 0.662072
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

@@ -38,7 +38,6 @@ func _physics_process(delta):
 	
 	if Input.is_action_just_pressed("light_attack"):
 		is_attacking = true
-		animated_sprite.play("attack")
 		animation_player.play("light_attack")
 	
 	if not is_attacking:
@@ -60,5 +59,3 @@ func _physics_process(delta):
 func _on_animated_sprite_2d_animation_finished():
 	is_attacking = false 
 
-func debug_func():
-	print("Light attack")

@@ -13,6 +13,7 @@ layer_0/tile_data = PackedInt32Array(196597, 131073, 0, 196598, 196609, 0, 19659
 
 [node name="Player" parent="." instance=ExtResource("1_a2b2v")]
 position = Vector2(0, -69)
+collision_layer = 8
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(0, -28.5)
@@ -21,3 +22,6 @@ zoom = Vector2(2, 2)
 [node name="EnemyPrototype" parent="." instance=ExtResource("3_5tso6")]
 position = Vector2(78, 26)
 scale = Vector2(4.52, 4.52)
+
+[editable path="Player"]
+[editable path="EnemyPrototype"]
