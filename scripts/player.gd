@@ -6,7 +6,8 @@ extends CharacterBody2D
 @onready var hitbox = $Hitbox/CollisionShape2D
 
 const SPEED = 200.0
-const JUMP_VELOCITY = -300.0
+const ATTACK_SPEED_DEBUFF = 150.0
+const JUMP_VELOCITY = -400.0
 const DASH_STRENGTH = 2000
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -14,7 +15,9 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var current_speed = 0
 var is_attacking = false
 
+
 func _physics_process(delta):
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -25,7 +28,9 @@ func _physics_process(delta):
 	
 	# Get the input direction and handle the movement/deceleration
 	var direction = Input.get_axis("move_left", "move_right")
-	if direction:
+	if direction and is_attacking:
+		current_speed = move_toward(current_speed, direction * (SPEED - ATTACK_SPEED_DEBUFF), 20)
+	elif direction:
 		current_speed = move_toward(current_speed, direction * SPEED, 20)
 	else:
 		current_speed = move_toward(current_speed, 0, 10)
@@ -36,7 +41,6 @@ func _physics_process(delta):
 	if direction > 0 and hitbox.position.x < 0 or direction < 0 and hitbox.position.x > 0:
 		hitbox.position.x *= -1
 		
-	
 	# dash
 	if Input.is_action_just_pressed("dash"):
 		velocity.x = direction * DASH_STRENGTH
@@ -47,12 +51,13 @@ func _physics_process(delta):
 		animation_player.play("light_attack")
 	
 	if not is_attacking:
+		if direction < 0:
+			animated_sprite.flip_h = true
+		elif direction > 0:
+			animated_sprite.flip_h = false
+			
 		if is_on_floor():
-			if direction < 0:
-				animated_sprite.flip_h = true
-				animated_sprite.play("run")
-			elif direction > 0:
-				animated_sprite.flip_h = false
+			if direction != 0:
 				animated_sprite.play("run")
 			else:
 				animated_sprite.play("idle")
