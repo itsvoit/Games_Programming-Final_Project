@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbtx57w1t0nk4"
-path="res://.godot/imported/Background_1.png-b9d5b614677d5e4780e9ab9abb3ac8f5.ctex"
+path="res://.godot/imported/background_1.png-d1d8e74de5c395e4cce11288892a5a77.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/night-forest/Background_1.png"
-dest_files=["res://.godot/imported/Background_1.png-b9d5b614677d5e4780e9ab9abb3ac8f5.ctex"]
+source_file="res://assets/environment/night-forest/background_1.png"
+dest_files=["res://.godot/imported/background_1.png-d1d8e74de5c395e4cce11288892a5a77.ctex"]
 
 [params]
 

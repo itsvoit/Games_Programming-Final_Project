@@ -22,6 +22,3 @@ zoom = Vector2(2, 2)
 [node name="EnemyPrototype" parent="." instance=ExtResource("3_5tso6")]
 position = Vector2(78, 26)
 scale = Vector2(4.52, 4.52)
-
-[editable path="Player"]
-[editable path="EnemyPrototype"]
