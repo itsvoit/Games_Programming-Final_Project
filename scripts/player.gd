@@ -1,9 +1,10 @@
+class_name Player
 extends CharacterBody2D
-
 
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var animation_player = $AnimationPlayer
 @onready var hitbox = $Hitbox/CollisionShape2D
+@onready var health = $Health
 
 const SPEED = 200.0
 const ATTACK_SPEED_DEBUFF = 150.0
@@ -16,8 +17,12 @@ var current_speed = 0
 var is_attacking = false
 
 
+func _ready():
+	health.connect("taken_damage", _taken_damage)
+	health.connect("entitiy_died", _die)
+
+
 func _physics_process(delta):
-		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -66,5 +71,14 @@ func _physics_process(delta):
 	
 	move_and_slide()
 
+func take_damage(value: float):
+	health.take_damage(value)
+
 func attack_anim_finished():
 	is_attacking = false
+
+func _taken_damage():
+	pass
+	
+func _die():
+	pass

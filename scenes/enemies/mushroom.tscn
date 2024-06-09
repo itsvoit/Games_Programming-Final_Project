@@ -10,6 +10,9 @@
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="6_x218j"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="7_kcxq4"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hgxl"]
+size = Vector2(20, 37)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_c6m61"]
 atlas = ExtResource("1_dtkj3")
 region = Rect2(0, 0, 150, 150)
@@ -234,9 +237,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5hgxl"]
-size = Vector2(20, 37)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3u8by"]
 size = Vector2(20, 37)
 
@@ -248,7 +248,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/0/path = NodePath("../Hitbox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -260,7 +260,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/1/path = NodePath("../Hurtbox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -276,7 +276,7 @@ length = 0.9
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Hitbox/CollisionShape2D:disabled")
+tracks/0/path = NodePath("../Hitbox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -288,7 +288,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D")
+tracks/1/path = NodePath("../AnimatedSprite2D")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -306,7 +306,7 @@ length = 2.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/path = NodePath("../AnimatedSprite2D")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -334,7 +334,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hurtbox/CollisionShape2D:disabled")
+tracks/2/path = NodePath("../Hurtbox/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -351,8 +351,14 @@ _data = {
 "death": SubResource("Animation_gsj2l")
 }
 
-[node name="Mushroom" type="Node2D"]
+[node name="Mushroom" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
 script = ExtResource("1_cl3ph")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -18.5)
+shape = SubResource("RectangleShape2D_5hgxl")
 
 [node name="Health" parent="." instance=ExtResource("1_esy4i")]
 
@@ -363,14 +369,6 @@ animation = &"hurt"
 autoplay = "idle"
 frame = 3
 frame_progress = 1.0
-
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, -18.5)
-shape = SubResource("RectangleShape2D_5hgxl")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 script = ExtResource("6_x218j")
@@ -388,6 +386,7 @@ shape = SubResource("RectangleShape2D_plh07")
 disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("")
 libraries = {
 "": SubResource("AnimationLibrary_pl3g4")
 }
