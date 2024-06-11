@@ -8,6 +8,8 @@ extends CharacterBody2D
 @onready var hitbox = $Hitbox
 @onready var hurtbox = $Hurtbox
 
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+
 var is_dead = false
 var is_taking_damage = false
 var is_following_player = false
@@ -18,6 +20,7 @@ var direction: int = 1
 var last_patrol_direction: int = 1
 var current_speed: float = 0
 var last_attack: float = -1000000
+
 
 @export var attack_cooldown: float = 1
 @export var speed = 150
@@ -58,7 +61,8 @@ func get_rand_direction() -> int:
 	return directions[randi() % directions.size()]
 
 
-func physics_move():
+func physics_move(delta):
+	velocity.y += gravity * delta
 	animated_sprite.flip_h = direction < 0 if direction != 0 else not bool(direction)
 	# play the animation
 	animated_sprite.play("run")
@@ -84,7 +88,7 @@ func state_idle():
 	direction = last_patrol_direction
 	current_state = State.PATROL
 
-func state_patrol(_delta: float):
+func state_patrol(delta: float):
 	last_patrol_direction = direction
 	if is_following_player:
 		# found player, follow him
@@ -93,9 +97,9 @@ func state_patrol(_delta: float):
 		# bounce back from walls
 		if is_on_wall():
 			direction *= -1
-		physics_move()
+		physics_move(delta)
 
-func state_follow(_delta: float):
+func state_follow(delta: float):
 	if in_attack_range:
 		# try to attack
 		current_state = State.ATTACK
@@ -104,15 +108,18 @@ func state_follow(_delta: float):
 		current_state = State.PATROL
 		direction = get_rand_direction()
 	else:
+		if direction > 0 and hitbox.position.x < 0 or direction < 0 and hitbox.position.x > 0:
+			hitbox.position.x *= -1
+			attack_range.position.x *= -1
 		# play run animation
 		animated_sprite.play("run")
 		# follow (track) the player and try to get close
 		var diff = player_to_follow.position.x - position.x
-		if diff > 0.01:
+		if diff > 0.0001:
 			direction = 1
-		elif diff < 0.01:
+		elif diff < 0.0001:
 			direction = -1
-		physics_move()
+		physics_move(delta)
 
 func state_attack():
 	# attack animation cannot be stopped
@@ -123,7 +130,10 @@ func state_attack():
 		else:
 			if direction > 0 and hitbox.position.x < 0 or direction < 0 and hitbox.position.x > 0:
 				hitbox.position.x *= -1
+				attack_range.position.x *= -1
+				print("cahnge sprites position...")
 			if _can_attack():
+				print("attacking...")
 				animation_player.play("attack")
 				last_attack = Time.get_ticks_msec()
 			else:

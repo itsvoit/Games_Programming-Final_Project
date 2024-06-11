@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://wegljpb1j3bi"]
+[gd_scene load_steps=12 format=3 uid="uid://wegljpb1j3bi"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_qagni"]
 [ext_resource type="PackedScene" uid="uid://buexi1thq5fbt" path="res://scenes/utilities/hitbox.tscn" id="3_7whgn"]
@@ -7,6 +7,8 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oh61v"]
 size = Vector2(61.7054, 88.6464)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dxvh6"]
 
 [sub_resource type="Animation" id="Animation_mrw7j"]
 length = 0.001
@@ -82,25 +84,34 @@ radius = 8.0
 height = 24.0
 
 [node name="Player" type="CharacterBody2D"]
-position = Vector2(0, -64)
+position = Vector2(0, -15)
 collision_layer = 8
 script = ExtResource("1_qagni")
 
 [node name="Hitbox" parent="." instance=ExtResource("3_7whgn")]
+position = Vector2(16, 0)
 collision_on_layer = 16
 damage = 50.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-position = Vector2(17, 39)
+position = Vector2(0, -9)
 scale = Vector2(0.745, 0.699)
 shape = SubResource("RectangleShape2D_oh61v")
 disabled = true
 
+[node name="Sprite2D" type="Sprite2D" parent="Hitbox"]
+visible = false
+position = Vector2(0, -9)
+scale = Vector2(0.09, 0.015)
+texture = SubResource("NoiseTexture2D_dxvh6")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, 40)
+position = Vector2(0, -9)
 sprite_frames = ExtResource("4_u76e3")
 animation = &"attack"
 autoplay = "idle"
+frame = 11
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -108,14 +119,15 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 51)
+position = Vector2(1, 2)
 shape = SubResource("CapsuleShape2D_wu4cr")
 
 [node name="Hurtbox" type="Area2D" parent="."]
+position = Vector2(0, 2)
 script = ExtResource("4_8lvo8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(1, 51)
+position = Vector2(1, 0)
 shape = SubResource("CapsuleShape2D_wgt58")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
