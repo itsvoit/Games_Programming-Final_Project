@@ -1,47 +1,76 @@
-[gd_scene load_steps=2 format=3 uid="uid://8lxypxspmupc"]
+[gd_scene load_steps=4 format=3 uid="uid://8lxypxspmupc"]
 
 [ext_resource type="Script" path="res://scripts/settings.gd" id="1_31gw2"]
+[ext_resource type="PackedScene" uid="uid://d0sxtdq0vq35b" path="res://scenes/ui/sounds_settings.tscn" id="2_mbw03"]
+[ext_resource type="PackedScene" uid="uid://ckjuuyum6kfen" path="res://scenes/ui/controls_settings.tscn" id="3_1eemy"]
 
-[node name="Options" type="Control"]
+[node name="StartGameSettings" type="Control"]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_31gw2")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="Navigation" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -60.0
+offset_left = -75.0
 offset_top = -68.0
-offset_right = 60.0
+offset_right = 75.0
 offset_bottom = 68.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="button_controls" type="Button" parent="VBoxContainer"]
+[node name="Label" type="Label" parent="Navigation"]
+layout_mode = 2
+text = "Settings"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="Navigation"]
+layout_mode = 2
+
+[node name="Buttons" type="VBoxContainer" parent="Navigation"]
+layout_mode = 2
+
+[node name="button_controls" type="Button" parent="Navigation/Buttons"]
 layout_mode = 2
 text = "Controls"
 
-[node name="button_sounds" type="Button" parent="VBoxContainer"]
+[node name="button_sounds" type="Button" parent="Navigation/Buttons"]
 layout_mode = 2
 text = "Sounds"
 
-[node name="button_video" type="Button" parent="VBoxContainer"]
+[node name="button_video" type="Button" parent="Navigation/Buttons"]
+visible = false
 layout_mode = 2
 text = "Video"
 
-[node name="button_back" type="Button" parent="VBoxContainer"]
+[node name="button_back" type="Button" parent="Navigation/Buttons"]
 layout_mode = 2
 text = "Back"
 
-[connection signal="pressed" from="VBoxContainer/button_controls" to="." method="_on_button_controls_pressed"]
-[connection signal="pressed" from="VBoxContainer/button_sounds" to="." method="_on_button_sounds_pressed"]
-[connection signal="pressed" from="VBoxContainer/button_video" to="." method="_on_button_video_pressed"]
-[connection signal="pressed" from="VBoxContainer/button_back" to="." method="_on_button_back_pressed"]
+[node name="Sounds" parent="." instance=ExtResource("2_mbw03")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+
+[node name="Controls" parent="." instance=ExtResource("3_1eemy")]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
