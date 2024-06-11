@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://ckjuuyum6kfen"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_left = 580.0
+offset_top = 292.0
+offset_right = 620.0
+offset_bottom = 332.0
+columns = 2
+
+[node name="Left" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Left"
+
+[node name="Left_key" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Left Arrow"
+horizontal_alignment = 2
+
+[node name="Right" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Right"
+
+[node name="Right_key" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Right Arrow
+"
+horizontal_alignment = 2
+
+[node name="Jump" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Jump"
+
+[node name="Jump_key" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Space"
+horizontal_alignment = 2
+
+[node name="Dash" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Dash"
+
+[node name="Dash_key" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "X"
+horizontal_alignment = 2
+
+[node name="Attack" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Attack"
+
+[node name="Dash_key2" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Z"
+horizontal_alignment = 2
