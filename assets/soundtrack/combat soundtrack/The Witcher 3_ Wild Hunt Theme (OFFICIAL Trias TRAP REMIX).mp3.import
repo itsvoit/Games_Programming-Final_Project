@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://nt124odwa1uy"
+path="res://.godot/imported/The Witcher 3_ Wild Hunt Theme (OFFICIAL Trias TRAP REMIX).mp3-d1976dba5e1d7bbeff09019a0c89dadb.mp3str"
+
+[deps]
+
+source_file="res://assets/soundtrack/combat soundtrack/The Witcher 3_ Wild Hunt Theme (OFFICIAL Trias TRAP REMIX).mp3"
+dest_files=["res://.godot/imported/The Witcher 3_ Wild Hunt Theme (OFFICIAL Trias TRAP REMIX).mp3-d1976dba5e1d7bbeff09019a0c89dadb.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

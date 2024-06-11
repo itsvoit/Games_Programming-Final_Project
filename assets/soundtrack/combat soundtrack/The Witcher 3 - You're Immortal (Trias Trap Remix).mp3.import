@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://blndls56ym6no"
+path="res://.godot/imported/The Witcher 3 - You're Immortal (Trias Trap Remix).mp3-c7c20f1194549d2be3558045027b8107.mp3str"
+
+[deps]
+
+source_file="res://assets/soundtrack/combat soundtrack/The Witcher 3 - You're Immortal (Trias Trap Remix).mp3"
+dest_files=["res://.godot/imported/The Witcher 3 - You're Immortal (Trias Trap Remix).mp3-c7c20f1194549d2be3558045027b8107.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

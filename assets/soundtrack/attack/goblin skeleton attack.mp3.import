@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bsj812utcsy38"
+path="res://.godot/imported/goblin skeleton attack.mp3-6cbf1f65835e417cdf4c48a7e3f339f2.mp3str"
+
+[deps]
+
+source_file="res://assets/soundtrack/attack/goblin skeleton attack.mp3"
+dest_files=["res://.godot/imported/goblin skeleton attack.mp3-6cbf1f65835e417cdf4c48a7e3f339f2.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
