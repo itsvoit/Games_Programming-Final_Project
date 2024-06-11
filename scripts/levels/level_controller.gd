@@ -10,5 +10,6 @@ func init(sceneController: SceneController):
 	controller = sceneController
 
 func _next_level(body):
-	controller.nextLevel()
+	#controller.nextLevel()
+	pass
 	
