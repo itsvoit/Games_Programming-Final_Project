@@ -4,7 +4,8 @@ extends Node
 @export var level1Path: String
 @export var level2Path: String
 @export var level3Path: String
-var level1Packed = preload("res://scenes/first_level.tscn")
+#var level1Packed = preload("res://scenes/test_level.tscn")
+var level1Packed = preload("res://scenes/levels/test_level.tscn")
 var level2Packed = preload("res://scenes/second_level.tscn")
 var level3Packed = preload("res://scenes/final_level.tscn")
 var level1
