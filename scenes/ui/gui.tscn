@@ -22,10 +22,10 @@ script = ExtResource("1_rl5l6")
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="."]
 layout_mode = 0
-offset_left = -600.0
-offset_top = 225.0
-offset_right = -200.0
-offset_bottom = 260.0
+offset_left = -613.0
+offset_top = 298.0
+offset_right = -213.0
+offset_bottom = 333.0
 value = 100.0
 nine_patch_stretch = true
 texture_progress = SubResource("GradientTexture1D_ult7x")

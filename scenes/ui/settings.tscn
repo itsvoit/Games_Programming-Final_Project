@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/settings.gd" id="1_31gw2"]
 [ext_resource type="PackedScene" uid="uid://d0sxtdq0vq35b" path="res://scenes/ui/sounds_settings.tscn" id="2_mbw03"]
-[ext_resource type="PackedScene" uid="uid://ckjuuyum6kfen" path="res://scenes/ui/controls_settings.tscn" id="3_1eemy"]
+[ext_resource type="PackedScene" uid="uid://ckjuuyum6kfen" path="res://scenes/ui/Controls_settings.tscn" id="3_1eemy"]
 
 [node name="StartGameSettings" type="Control"]
 layout_mode = 3

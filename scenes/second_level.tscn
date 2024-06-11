@@ -6,13 +6,6 @@
 
 [node name="Node2D" type="Node2D"]
 
-[node name="Player" parent="." instance=ExtResource("1_m7ad6")]
-position = Vector2(0, -32)
-scale = Vector2(0.5, 0.5)
-
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(6, 6)
-
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource("1_3ptap")
 format = 2
@@ -21,6 +14,7 @@ layer_1/tile_data = PackedInt32Array(-589830, 458752, 5, -524294, 458752, 6, -58
 layer_2/tile_data = PackedInt32Array(-524292, 458752, 5, -458756, 458752, 6, -524291, 524288, 5, -458755, 524288, 6, -524290, 589824, 5, -458754, 589824, 6, -196522, 131074, 28, -130986, 131074, 29, -65450, 131074, 30, -196521, 196610, 28, -130985, 196610, 29, -65449, 196610, 30)
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+visible = false
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_mirroring = Vector2(480, 0)
@@ -28,3 +22,6 @@ motion_mirroring = Vector2(480, 0)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_sbfwr")
+
+[node name="Player" parent="." instance=ExtResource("1_m7ad6")]
+position = Vector2(64, -115)

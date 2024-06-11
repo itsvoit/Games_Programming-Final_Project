@@ -4,7 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://smsnbk2vtu5g" path="res://scenes/utilities/health.tscn" id="2_5t50w"]
 [ext_resource type="PackedScene" uid="uid://buexi1thq5fbt" path="res://scenes/utilities/hitbox.tscn" id="3_7whgn"]
 [ext_resource type="SpriteFrames" uid="uid://x4blu2ugmf1g" path="res://assets/SpriteFrames/demon_frames.tres" id="4_u76e3"]
-[ext_resource type="PackedScene" uid="uid://baxohkk4bh1jv" path="res://scenes/utilities/hurtbox.tscn" id="5_kuf67"]
+[ext_resource type="PackedScene" uid="uid://dj11uyhulmdl3" path="res://scenes/ui/gui.tscn" id="5_gwa7m"]
+[ext_resource type="PackedScene" uid="uid://cswmon5783q3u" path="res://scenes/ui/pause_menu.tscn" id="6_chwpl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oh61v"]
 size = Vector2(61.7054, 88.6464)
@@ -112,10 +113,16 @@ libraries = {
 position = Vector2(1, 51)
 shape = SubResource("CapsuleShape2D_wu4cr")
 
-[node name="Hurtbox" parent="." instance=ExtResource("5_kuf67")]
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -28.5)
+zoom = Vector2(2, 2)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
-position = Vector2(0, 51)
-shape = SubResource("CapsuleShape2D_on585")
+[node name="GUI" parent="Camera2D" instance=ExtResource("5_gwa7m")]
+scale = Vector2(0.5, 0.5)
+metadata/_edit_use_anchors_ = true
+
+[node name="Pause_menu" parent="Camera2D" instance=ExtResource("6_chwpl")]
+scale = Vector2(0.5, 0.5)
+metadata/_edit_use_anchors_ = true
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
