@@ -1,0 +1,52 @@
+[gd_scene load_steps=8 format=3 uid="uid://bya6mllo8kd2t"]
+
+[ext_resource type="Script" path="res://scenes/multiplayer/gui2.gd" id="1_ib6i3"]
+[ext_resource type="Texture2D" uid="uid://b0yehhf1gud2h" path="res://assets/textures/healthBar/health_gone_gradient_texture.tres" id="2_e183d"]
+[ext_resource type="Texture2D" uid="uid://b0mwemrdku7ry" path="res://assets/textures/healthBar/health_gradient_texture.tres" id="3_8o7tt"]
+
+[sub_resource type="Gradient" id="Gradient_ltieu"]
+colors = PackedColorArray(0, 0.368627, 0, 1, 0.0352941, 0, 0.494118, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_qhwxh"]
+gradient = SubResource("Gradient_ltieu")
+width = 400
+
+[sub_resource type="Gradient" id="Gradient_wrjsw"]
+colors = PackedColorArray(0, 0.803922, 0, 1, 0, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nsgb2"]
+gradient = SubResource("Gradient_wrjsw")
+width = 400
+
+[node name="GUI2Player" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ib6i3")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = -613.0
+offset_top = 298.0
+offset_right = -213.0
+offset_bottom = 333.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = ExtResource("2_e183d")
+texture_progress = ExtResource("3_8o7tt")
+
+[node name="TextureProgressBar2" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = 204.0
+offset_top = 298.0
+offset_right = 604.0
+offset_bottom = 333.0
+value = 100.0
+nine_patch_stretch = true
+texture_under = SubResource("GradientTexture1D_qhwxh")
+texture_progress = SubResource("GradientTexture1D_nsgb2")

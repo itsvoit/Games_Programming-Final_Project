@@ -5,16 +5,17 @@ signal nextLevel
 @onready var show_secrets = $ShowSecret
 @onready var tile_map = $TileMap
 
-var controller: SceneController
+var controller: SceneController2
 @export var end_level: Area2D
 
-func init(sceneController: SceneController):
+func init(sceneController: SceneController2):
 	controller = sceneController
 
 func _ready():
 	if end_level.is_connected("body_entered", _next_level):
 		end_level.disconnect("body_entered", _next_level)
 	end_level.connect("body_entered", _next_level)
+	print("Connected _next_level: " + str(end_level.is_connected("body_entered", _next_level)))
 	show_secrets.collision_mask = 1 << 4-1
 	show_secrets.collision_layer = 0
 	show_secrets.connect("body_entered", _show_secrets)

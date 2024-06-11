@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx8yqkcvmswou"]
+
+[ext_resource type="Script" path="res://GameController2.gd" id="1_jokd2"]
+[ext_resource type="Script" path="res://scripts/health.gd" id="2_g4iq2"]
+
+[node name="Node" type="Node"]
+script = ExtResource("1_jokd2")
+
+[node name="Health2" type="Node2D" parent="."]
+script = ExtResource("2_g4iq2")
+health = 100.0

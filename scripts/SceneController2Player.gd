@@ -1,9 +1,9 @@
-class_name SceneController
+class_name SceneController2
 extends Node
 
-var level1Packed = preload("res://scenes/levels/first_level.tscn")
-var level2Packed = preload("res://scenes/levels/lush_cave.tscn")
-var level3Packed = preload("res://scenes/levels/credits.tscn")
+var level1Packed = preload("res://scenes/multiplayer/levels2Players/first_level.tscn")
+var level2Packed = preload("res://scenes/multiplayer/levels2Players/lush_cave.tscn")
+var level3Packed = preload("res://scenes/multiplayer/levels2Players/credits.tscn")
 var level1
 var level2
 var level3

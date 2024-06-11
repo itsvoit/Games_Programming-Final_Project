@@ -18,20 +18,26 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 20.0
-offset_top = -120.0
-offset_right = 140.0
+offset_top = -155.0
+offset_right = 180.0
 offset_bottom = -19.0
 grow_vertical = 0
 
 [node name="Start_button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 focus_neighbor_top = NodePath("../Quit_button")
+focus_neighbor_bottom = NodePath("../Start_button2")
+text = "Start solo"
+
+[node name="Start_button2" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+focus_neighbor_top = NodePath("../Start_button")
 focus_neighbor_bottom = NodePath("../Options_button")
-text = "Start"
+text = "Start multiplayer"
 
 [node name="Options_button" type="Button" parent="VBoxContainer"]
 layout_mode = 2
-focus_neighbor_top = NodePath("../Start_button")
+focus_neighbor_top = NodePath("../Start_button2")
 focus_neighbor_bottom = NodePath("../Quit_button")
 text = "Options"
 
@@ -42,5 +48,6 @@ focus_neighbor_bottom = NodePath("../Start_button")
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/Start_button" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/Start_button2" to="." method="_on_start_multi_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options_button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit_button" to="." method="_on_quit_button_pressed"]

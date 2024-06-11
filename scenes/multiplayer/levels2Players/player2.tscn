@@ -1,14 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://wegljpb1j3bi"]
+[gd_scene load_steps=12 format=3 uid="uid://cc1ofg21yuhty"]
 
-[ext_resource type="Script" path="res://scripts/player.gd" id="1_qagni"]
-[ext_resource type="PackedScene" uid="uid://buexi1thq5fbt" path="res://scenes/utilities/hitbox.tscn" id="3_7whgn"]
-[ext_resource type="SpriteFrames" uid="uid://dj44fg0va851e" path="res://scenes/multiplayer/player2SpriteFrames.tres" id="3_xguha"]
-[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_8lvo8"]
+[ext_resource type="Script" path="res://scripts/player2.gd" id="1_02row"]
+[ext_resource type="PackedScene" uid="uid://buexi1thq5fbt" path="res://scenes/utilities/hitbox.tscn" id="2_rjpda"]
+[ext_resource type="SpriteFrames" uid="uid://x4blu2ugmf1g" path="res://assets/SpriteFrames/demon_frames.tres" id="3_nblif"]
+[ext_resource type="Script" path="res://scripts/hurtbox.gd" id="4_iebv5"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_oh61v"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qxuqd"]
 size = Vector2(61.7054, 88.6464)
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dxvh6"]
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_nwt4g"]
 
 [sub_resource type="Animation" id="Animation_mrw7j"]
 length = 0.001
@@ -75,20 +75,18 @@ _data = {
 "light_attack": SubResource("Animation_ugesq")
 }
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wu4cr"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_4mll4"]
 radius = 8.0
 height = 26.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wgt58"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8ys6o"]
 radius = 8.0
 height = 24.0
 
-[node name="Player" type="CharacterBody2D"]
-position = Vector2(0, -15)
-collision_layer = 8
-script = ExtResource("1_qagni")
+[node name="Player2" type="CharacterBody2D"]
+script = ExtResource("1_02row")
 
-[node name="Hitbox" parent="." instance=ExtResource("3_7whgn")]
+[node name="Hitbox" parent="." instance=ExtResource("2_rjpda")]
 position = Vector2(16, 0)
 collision_on_layer = 16
 damage = 50.0
@@ -96,18 +94,18 @@ damage = 50.0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
 position = Vector2(0, -9)
 scale = Vector2(0.745, 0.699)
-shape = SubResource("RectangleShape2D_oh61v")
+shape = SubResource("RectangleShape2D_qxuqd")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Hitbox"]
 visible = false
 position = Vector2(0, -9)
 scale = Vector2(0.09, 0.015)
-texture = SubResource("NoiseTexture2D_dxvh6")
+texture = SubResource("NoiseTexture2D_nwt4g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -9)
-sprite_frames = ExtResource("3_xguha")
+sprite_frames = ExtResource("3_nblif")
 animation = &"run"
 autoplay = "idle"
 
@@ -118,14 +116,12 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 2)
-shape = SubResource("CapsuleShape2D_wu4cr")
+shape = SubResource("CapsuleShape2D_4mll4")
 
 [node name="Hurtbox" type="Area2D" parent="."]
 position = Vector2(0, 2)
-script = ExtResource("4_8lvo8")
+script = ExtResource("4_iebv5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox"]
 position = Vector2(1, 0)
-shape = SubResource("CapsuleShape2D_wgt58")
-
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+shape = SubResource("CapsuleShape2D_8ys6o")
