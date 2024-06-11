@@ -11,7 +11,7 @@ signal died
 
 const SPEED = 200.0
 const ATTACK_SPEED_DEBUFF = 150.0
-const JUMP_VELOCITY = -400.0
+const JUMP_VELOCITY = -300.0
 const DASH_STRENGTH = 2000
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
