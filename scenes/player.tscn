@@ -108,9 +108,9 @@ texture = SubResource("NoiseTexture2D_dxvh6")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -9)
 sprite_frames = ExtResource("4_u76e3")
-animation = &"attack"
+animation = &"hurt"
 autoplay = "idle"
-frame = 11
+frame = 4
 frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://di6twf0fhokdg"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://di6twf0fhokdg"]
 
 [ext_resource type="Texture2D" uid="uid://dnaf8fs0g36bj" path="res://assets/environment/night-forest/tileset.png" id="1_xpuos"]
 [ext_resource type="Texture2D" uid="uid://bxqdqhm6alj2g" path="res://assets/environment/castle/Assets.png" id="2_88wxc"]
 [ext_resource type="Texture2D" uid="uid://c8ljrfdy1ikf4" path="res://assets/environment/castle/Tilesetv3.png" id="3_lcoqc"]
 [ext_resource type="Texture2D" uid="uid://nhm6u4j8v2t6" path="res://assets/environment/Background.png" id="4_qbcox"]
 [ext_resource type="Texture2D" uid="uid://cipuyw3qfrp4r" path="res://assets/dev_assets/sprites/world_tileset.png" id="5_nuukb"]
+[ext_resource type="Texture2D" uid="uid://ctlfc5tq50evo" path="res://assets/environment/Background_greener.png" id="6_ukoye"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sv78a"]
 texture = ExtResource("1_xpuos")
@@ -3777,6 +3778,21 @@ texture = ExtResource("5_nuukb")
 3:15/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:15/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_g6df3"]
+texture = ExtResource("6_ukoye")
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+
 [resource]
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 8
@@ -3785,3 +3801,4 @@ sources/1 = SubResource("TileSetAtlasSource_eskbw")
 sources/2 = SubResource("TileSetAtlasSource_ocw1s")
 sources/3 = SubResource("TileSetAtlasSource_2le85")
 sources/4 = SubResource("TileSetAtlasSource_4vrt6")
+sources/5 = SubResource("TileSetAtlasSource_g6df3")

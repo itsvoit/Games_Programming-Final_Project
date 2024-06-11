@@ -438,6 +438,7 @@ position = Vector2(0, -18)
 shape = SubResource("RectangleShape2D_gfna3")
 
 [node name="Sprite2D" type="Sprite2D" parent="AttackRange"]
+visible = false
 position = Vector2(0, -27)
 scale = Vector2(0.0546875, 0.004)
 texture = SubResource("NoiseTexture2D_tunme")

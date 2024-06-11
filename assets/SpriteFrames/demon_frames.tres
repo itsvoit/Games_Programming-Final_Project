@@ -359,9 +359,9 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_m54ij")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
-"speed": 5.0
+"speed": 9.0
 }, {
 "frames": [{
 "duration": 1.0,

@@ -394,6 +394,7 @@ shape = SubResource("RectangleShape2D_l7t31")
 disabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Hitbox"]
+visible = false
 position = Vector2(-0.999999, -23)
 scale = Vector2(0.125, 0.004)
 texture = SubResource("NoiseTexture2D_kfnvn")
@@ -421,6 +422,7 @@ position = Vector2(0, -27)
 shape = SubResource("RectangleShape2D_c8837")
 
 [node name="Sprite2D" type="Sprite2D" parent="AttackRange"]
+visible = false
 position = Vector2(0, -36)
 scale = Vector2(0.0715332, 0.004)
 texture = SubResource("NoiseTexture2D_kfnvn")

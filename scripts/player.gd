@@ -18,6 +18,7 @@ const DASH_STRENGTH = 2000
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var current_speed = 0
 var is_attacking = false
+var is_taking_damage = false
 
 
 func _ready():
@@ -39,7 +40,7 @@ func _physics_process(delta):
 	
 	# Get the input direction and handle the movement/deceleration
 	var direction = Input.get_axis("move_left", "move_right")
-	if direction and is_attacking:
+	if direction and (is_attacking or is_taking_damage):
 		current_speed = move_toward(current_speed, direction * (SPEED - ATTACK_SPEED_DEBUFF), 20)
 	elif direction:
 		current_speed = move_toward(current_speed, direction * SPEED, 20)
@@ -61,7 +62,7 @@ func _physics_process(delta):
 		is_attacking = true
 		animation_player.play("light_attack")
 	
-	if not is_attacking:
+	if not is_attacking and not is_taking_damage:
 		if direction < 0:
 			animated_sprite.flip_h = true
 		elif direction > 0:
@@ -74,11 +75,15 @@ func _physics_process(delta):
 				animated_sprite.play("idle")
 		else:
 			animated_sprite.play("jump")
+	elif is_taking_damage and not animated_sprite.is_playing():
+		is_taking_damage = false
 	
 	move_and_slide()
 
 func take_damage(value: float):
 	GameController.playerChangeHealth(-value)
+	animated_sprite.play("hurt")
+	is_taking_damage = true
 
 func attack_anim_finished():
 	is_attacking = false

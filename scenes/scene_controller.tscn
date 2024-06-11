@@ -4,3 +4,6 @@
 
 [node name="SceneController" type="Node"]
 script = ExtResource("1_f3u4q")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true

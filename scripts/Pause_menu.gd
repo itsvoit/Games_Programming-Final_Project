@@ -7,6 +7,7 @@ extends Control
 @onready var navigation = $Navigation
 @onready var settings = $Settings
 
+var is_paused = false
 
 func _hide_all():
 	settings.hide()
@@ -35,13 +36,17 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	if Input.is_action_just_pressed("pause"):
+	if Input.is_action_just_pressed("pause") and not is_paused:
 		show()
 		_show_navigation()
 		get_tree().paused = true
+		is_paused = true
+	elif Input.is_action_just_pressed("pause") and is_paused:
+		_on_resume_button_pressed()
 
 
 func _on_resume_button_pressed():
+	is_paused = false
 	get_tree().paused = false
 	_hide_all()
 
