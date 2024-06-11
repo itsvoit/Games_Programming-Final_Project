@@ -11,6 +11,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
+	if player == null:
+		return
 	position = player.position
 	position.x += verticalOffset
 	position.y += horizontalOffset

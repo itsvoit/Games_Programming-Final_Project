@@ -8,6 +8,7 @@ signal playerDie
 
 @onready var player_health = $PlayerHealth
 
+
 func _ready():
 	player_health.connect("entity_died", _player_died)
 	player_health.connect("taken_damage", _player_took_damage)
