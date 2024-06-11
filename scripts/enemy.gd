@@ -6,6 +6,7 @@ extends CharacterBody2D
 @onready var follow_range = $FollowArea
 @onready var attack_range = $AttackRange
 @onready var hitbox = $Hitbox
+@onready var hurtbox = $Hurtbox
 
 var is_dead = false
 var is_taking_damage = false
@@ -16,7 +17,9 @@ var in_attack_range = false
 var direction: int = 1
 var last_patrol_direction: int = 1
 var current_speed: float = 0
+var last_attack: float = -1000000
 
+@export var attack_cooldown: float = 1
 @export var speed = 150
 @export var speed_variance = 50
 
@@ -32,21 +35,23 @@ enum State {
 
 var current_state = State.IDLE
 
-const debug: bool = true
+const debug: bool = false
 
 func _ready():
 	health.connect("entity_died", _on_health_entity_died)
 	health.connect("taken_damage", _on_health_taken_damage)
 	follow_range.connect("body_entered", _start_follow_player)
 	follow_range.connect("body_exited", _stop_follow_player)
-	follow_range.collision_mask = pow(2, 3)
-	follow_range.collision_layer = pow(2, 3)
+	follow_range.set_collision_mask_value(4, 1)
 	attack_range.connect("body_entered", _in_attack_range)
 	attack_range.connect("body_exited", _not_in_attack_range)
-	attack_range.collision_mask = pow(2, 3)
-	attack_range.collision_layer = pow(2, 3)
+	attack_range.set_collision_mask_value(4, 1)
+	
 	collision_mask = 1
-	speed = speed + (get_rand_direction() * randi_range(0, speed_variance) / 100)
+	hurtbox.set_collision_mask_value(5, 1)
+	hurtbox.set_collision_mask_value(2, 0)
+	hitbox.set_collision_layer_value(2, 1)
+	speed = speed + (get_rand_direction() * randi_range(0, speed_variance))
 
 
 func get_rand_direction() -> int:
@@ -73,10 +78,13 @@ func move(delta):
 	move_and_slide()
 
 func state_idle():
+	animated_sprite.play("idle")
+	if is_following_player and in_attack_range and not _can_attack():
+		return
 	direction = last_patrol_direction
 	current_state = State.PATROL
 
-func state_patrol(delta: float):
+func state_patrol(_delta: float):
 	last_patrol_direction = direction
 	if is_following_player:
 		# found player, follow him
@@ -87,7 +95,7 @@ func state_patrol(delta: float):
 			direction *= -1
 		physics_move()
 
-func state_follow(delta: float):
+func state_follow(_delta: float):
 	if in_attack_range:
 		# try to attack
 		current_state = State.ATTACK
@@ -115,12 +123,17 @@ func state_attack():
 		else:
 			if direction > 0 and hitbox.position.x < 0 or direction < 0 and hitbox.position.x > 0:
 				hitbox.position.x *= -1
-			animation_player.play("attack")
+			if _can_attack():
+				animation_player.play("attack")
+				last_attack = Time.get_ticks_msec()
+			else:
+				current_state = State.IDLE
 
 func state_hurt():
 	if not is_taking_damage:
 		is_taking_damage = true
 		animated_sprite.play("hurt")
+		print(str(owner) + " HURT")
 	elif not animated_sprite.is_playing():
 		is_taking_damage = false
 		current_state = State.IDLE
@@ -157,40 +170,7 @@ func _physics_process(delta):
 			if debug:
 				print("State DEAD")
 			state_dead()
-		
-	#if is_on_wall():
-		#direction *= -1
-		#print(str(owner) + " changed direction, new direction=" + str(direction))
-	#
-	#if not is_dead and not animation_player.is_playing():
-		#if is_following_player and not in_attack_range:
-			#direction = -1 if player_to_follow.position.x < position.x else 1
-		#elif is_following_player and in_attack_range:
-			#animation_player.play("attack")
-			#print("attack")
-		#
-		#if not is_taking_damage:
-			#if velocity.x == 0:
-				#animated_sprite.play("idle")
-			#else:
-				#animated_sprite.play("run")
-		#elif not animated_sprite.is_playing():
-			#print("finished taking damage")
-			#is_taking_damage = false
-			#direction = 1 if not animated_sprite.flip_h else -1
-		#else:
-			#direction = 0
-	#else:
-		#direction = 0
-	#
-	#if direction > 0 and hitbox.position.x < 0 or direction < 0 and hitbox.position.x > 0:
-		#hitbox.position.x *= -1
-	#
-	#current_speed = direction * speed
-	#animated_sprite.flip_h = direction < 0 if direction != 0 else not bool(direction)
-	#velocity.x = current_speed
-	#
-	#move_and_slide()
+
 
 # damage functions and callback
 func take_damage(value):
@@ -199,8 +179,11 @@ func take_damage(value):
 func _on_health_entity_died():
 	current_state = State.DEAD
 
-func _on_health_taken_damage(value):
+func _on_health_taken_damage(_value):
 	current_state = State.HURT
+
+func _can_attack() -> bool:
+	return last_attack + (attack_cooldown*1000) <= Time.get_ticks_msec()
 
 # ai signal callbacks
 func _start_follow_player(player: Player):
@@ -210,7 +193,6 @@ func _start_follow_player(player: Player):
 	player_to_follow = player
 	if debug:
 		print("following player")
-
 
 func _stop_follow_player(player: Player):
 	if player == null or not is_following_player:
@@ -233,4 +215,5 @@ func _not_in_attack_range(player: Player):
 	if debug:
 		print("Out of attack range")
 	in_attack_range = false
-	
+
+

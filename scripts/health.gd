@@ -7,14 +7,18 @@ signal healed(value)
 signal entity_died()
 
 # Exported variables
-@export var health: float = 100:
+@export var max_health: float = 100:
 	set(value):
-		health = clamp(value, 0, 100)
-		
+		max_health = max(0, value)
+
+@export var health: float = max_health:
+	set(value):
+		health = clamp(value, 0, max_health)
+
 @export var armor: float = 0:
 	set(value):
 		armor = max(0, value)
-		
+
 @export var resistance: float = 0:
 	set(value):
 		resistance = clamp(value, 0, 1)

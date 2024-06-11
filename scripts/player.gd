@@ -1,10 +1,13 @@
 class_name Player
 extends CharacterBody2D
 
+signal takenDamage(value)
+signal died
+
 @onready var animated_sprite = $AnimatedSprite2D
 @onready var animation_player = $AnimationPlayer
-@onready var hitbox = $Hitbox/CollisionShape2D
-@onready var health = $Health
+@onready var hitbox = $Hitbox
+@onready var hurtbox = $Hurtbox
 
 const SPEED = 200.0
 const ATTACK_SPEED_DEBUFF = 150.0
@@ -18,8 +21,11 @@ var is_attacking = false
 
 
 func _ready():
-	health.connect("taken_damage", _taken_damage)
-	health.connect("entitiy_died", _die)
+	GameController.connect("playerDie", _died)
+	hitbox.collision_layer = 1 << 5-1  # deal damage on layer 5
+	hurtbox.collision_mask = 1 << 2-1  # get hit on layer 2
+	collision_layer = 1 << 4-1  # get recognised on layer 4
+	collision_mask = 1 << 1-1  # collide with world on layer 1
 
 
 func _physics_process(delta):
@@ -72,13 +78,12 @@ func _physics_process(delta):
 	move_and_slide()
 
 func take_damage(value: float):
-	health.take_damage(value)
+	GameController.playerChangeHealth(-value)
 
 func attack_anim_finished():
 	is_attacking = false
 
-func _taken_damage():
+func _died():
 	pass
-	
-func _die():
-	pass
+	# other died code
+	# animation

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg32ptwq6wibt"]
+
+[ext_resource type="Script" path="res://scripts/gameController.gd" id="1_fx51l"]
+[ext_resource type="PackedScene" uid="uid://smsnbk2vtu5g" path="res://scenes/utilities/health.tscn" id="2_r1r53"]
+
+[node name="GameController" type="Node"]
+script = ExtResource("1_fx51l")
+
+[node name="PlayerHealth" parent="." instance=ExtResource("2_r1r53")]
+health = 100.0

@@ -1,0 +1,8 @@
+[gd_resource type="GradientTexture1D" load_steps=2 format=3 uid="uid://cciletr2jlrqs"]
+
+[sub_resource type="Gradient" id="Gradient_bq6m6"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[resource]
+gradient = SubResource("Gradient_bq6m6")
+width = 400
