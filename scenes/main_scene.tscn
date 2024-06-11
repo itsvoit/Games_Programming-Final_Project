@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://rohs0t7a1q8g"]
+[gd_scene load_steps=10 format=3 uid="uid://rohs0t7a1q8g"]
 
 [ext_resource type="TileSet" uid="uid://di6twf0fhokdg" path="res://assets/Tilesets/night.tres" id="1_2ah0h"]
 [ext_resource type="PackedScene" uid="uid://wegljpb1j3bi" path="res://scenes/player.tscn" id="1_a2b2v"]
+[ext_resource type="Script" path="res://scripts/gameController.gd" id="1_ajcy8"]
+[ext_resource type="PackedScene" uid="uid://dj11uyhulmdl3" path="res://scenes/ui/gui.tscn" id="2_sqskw"]
 [ext_resource type="PackedScene" uid="uid://dc5pxok3hr3fp" path="res://scenes/enemies/goblin.tscn" id="3_nrg8f"]
 [ext_resource type="PackedScene" uid="uid://cww6xerf2l2ao" path="res://scenes/enemies/mushroom.tscn" id="4_mskgp"]
 [ext_resource type="PackedScene" uid="uid://bh2xmw3yowske" path="res://scenes/enemies/skeleton.tscn" id="5_orlsn"]
@@ -9,6 +11,9 @@
 [ext_resource type="PackedScene" uid="uid://cswmon5783q3u" path="res://scenes/ui/pause_menu.tscn" id="7_83x8p"]
 
 [node name="Main_scene" type="Node2D"]
+
+[node name="GameController" type="Node" parent="."]
+script = ExtResource("1_ajcy8")
 
 [node name="Level" type="Node2D" parent="."]
 
@@ -20,11 +25,11 @@ collision_layer = 8
 position = Vector2(0, -28.5)
 zoom = Vector2(2, 2)
 
-[node name="Pause_menu" parent="Level/Player" instance=ExtResource("7_83x8p")]
-offset_left = -644.0
-offset_top = -365.0
-offset_right = -644.0
-offset_bottom = -365.0
+[node name="GUI" parent="Level/Player/Camera2D" instance=ExtResource("2_sqskw")]
+scale = Vector2(0.5, 0.5)
+
+[node name="Pause_menu" parent="Level/Player/Camera2D" instance=ExtResource("7_83x8p")]
+scale = Vector2(0.5, 0.5)
 
 [node name="TileMap" type="TileMap" parent="Level"]
 tile_set = ExtResource("1_2ah0h")

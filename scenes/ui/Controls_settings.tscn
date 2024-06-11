@@ -1,63 +1,89 @@
-[gd_scene format=3 uid="uid://ckjuuyum6kfen"]
+[gd_scene load_steps=2 format=3 uid="uid://ckjuuyum6kfen"]
 
-[node name="Control" type="Control"]
+[ext_resource type="Script" path="res://scripts/ui/controls_settings.gd" id="1_3hax5"]
+
+[node name="Controls" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_3hax5")
 
-[node name="GridContainer" type="GridContainer" parent="."]
-layout_mode = 0
-offset_left = 580.0
-offset_top = 292.0
-offset_right = 620.0
-offset_bottom = 332.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -73.0
+offset_top = -83.0
+offset_right = 73.0
+offset_bottom = 83.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Controls"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
 columns = 2
 
-[node name="Left" type="Label" parent="GridContainer"]
+[node name="Left" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Left"
 
-[node name="Left_key" type="Label" parent="GridContainer"]
+[node name="Left_key" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Left Arrow"
 horizontal_alignment = 2
 
-[node name="Right" type="Label" parent="GridContainer"]
+[node name="Right" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Right"
 
-[node name="Right_key" type="Label" parent="GridContainer"]
+[node name="Right_key" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Right Arrow
 "
 horizontal_alignment = 2
 
-[node name="Jump" type="Label" parent="GridContainer"]
+[node name="Jump" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Jump"
 
-[node name="Jump_key" type="Label" parent="GridContainer"]
+[node name="Jump_key" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Space"
 horizontal_alignment = 2
 
-[node name="Dash" type="Label" parent="GridContainer"]
+[node name="Dash" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Dash"
 
-[node name="Dash_key" type="Label" parent="GridContainer"]
+[node name="Dash_key" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "X"
 horizontal_alignment = 2
 
-[node name="Attack" type="Label" parent="GridContainer"]
+[node name="Attack" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Attack"
 
-[node name="Dash_key2" type="Label" parent="GridContainer"]
+[node name="Dash_key2" type="Label" parent="VBoxContainer/GridContainer"]
 layout_mode = 2
 text = "Z"
 horizontal_alignment = 2
+
+[node name="BackButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Back"

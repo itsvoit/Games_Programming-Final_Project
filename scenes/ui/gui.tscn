@@ -1,0 +1,31 @@
+[gd_scene load_steps=4 format=3 uid="uid://dj11uyhulmdl3"]
+
+[ext_resource type="Script" path="res://scripts/ui/gui.gd" id="1_rl5l6"]
+
+[sub_resource type="Gradient" id="Gradient_oc858"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ult7x"]
+gradient = SubResource("Gradient_oc858")
+width = 400
+
+[node name="GUI" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_rl5l6")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="."]
+layout_mode = 0
+offset_left = -600.0
+offset_top = 225.0
+offset_right = -200.0
+offset_bottom = 260.0
+value = 100.0
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_ult7x")
