@@ -2,7 +2,7 @@
 
 [ext_resource type="TileSet" uid="uid://di6twf0fhokdg" path="res://assets/Tilesets/night.tres" id="1_vfpc6"]
 [ext_resource type="PackedScene" uid="uid://wegljpb1j3bi" path="res://scenes/player.tscn" id="2_24lco"]
-[ext_resource type="PackedScene" uid="uid://bwh2j4610rv5c" path="res://scenes/camera.tscn" id="3_k548y"]
+[ext_resource type="PackedScene" path="res://scenes/camera.tscn" id="3_k548y"]
 
 [node name="Node2D" type="Node2D"]
 

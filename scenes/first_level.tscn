@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfthrj4bsqgop"]
+[gd_scene load_steps=10 format=3 uid="uid://cfthrj4bsqgop"]
 
 [ext_resource type="Script" path="res://scripts/levels/level_controller.gd" id="1_730r0"]
 [ext_resource type="TileSet" uid="uid://di6twf0fhokdg" path="res://assets/Tilesets/night.tres" id="1_20201"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://dc5pxok3hr3fp" path="res://scenes/enemies/goblin.tscn" id="5_pm6rc"]
 [ext_resource type="PackedScene" uid="uid://bh2xmw3yowske" path="res://scenes/enemies/skeleton.tscn" id="6_oxfki"]
 [ext_resource type="PackedScene" uid="uid://buvdpfc43fjrn" path="res://scenes/enemies/flying_eye.tscn" id="7_q7mkl"]
+[ext_resource type="AudioStream" uid="uid://nt124odwa1uy" path="res://assets/soundtrack/combat soundtrack/The Witcher 3_ Wild Hunt Theme (OFFICIAL Trias TRAP REMIX).mp3" id="8_stc67"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ldqcv"]
 size = Vector2(12, 39.5)
@@ -60,3 +61,7 @@ position = Vector2(776, -48)
 
 [node name="Goblin3" parent="." instance=ExtResource("5_pm6rc")]
 position = Vector2(838, -209)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_stc67")
+volume_db = -30.0

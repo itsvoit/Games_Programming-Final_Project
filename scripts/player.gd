@@ -8,6 +8,10 @@ signal died
 @onready var animation_player = $AnimationPlayer
 @onready var hitbox = $Hitbox
 @onready var hurtbox = $Hurtbox
+@onready var damage_sound = $damage
+@onready var death_sound = $death
+@onready var attack_sound = $attack
+@onready var dash_sound = $dash
 
 const SPEED = 200.0
 const ATTACK_SPEED_DEBUFF = 150.0
@@ -54,6 +58,7 @@ func _physics_process(delta):
 		
 	# dash
 	if Input.is_action_just_pressed("dash"):
+		damage_sound.play()
 		velocity.x = direction * DASH_STRENGTH
 		
 	
@@ -78,12 +83,15 @@ func _physics_process(delta):
 	move_and_slide()
 
 func take_damage(value: float):
+	damage_sound.play()
 	GameController.playerChangeHealth(-value)
 
 func attack_anim_finished():
+	attack_sound.play()
 	is_attacking = false
 
 func _died():
+	death_sound.play()
 	pass
 	# other died code
 	# animation

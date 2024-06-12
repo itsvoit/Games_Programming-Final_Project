@@ -7,6 +7,10 @@ extends CharacterBody2D
 @onready var attack_range = $AttackRange
 @onready var hitbox = $Hitbox
 @onready var hurtbox = $Hurtbox
+@onready var noises = $noises
+@onready var death_sound = $death
+@onready var attack_sound = $attack
+@onready var damage_sound = $damage
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
@@ -20,6 +24,8 @@ var direction: int = 1
 var last_patrol_direction: int = 1
 var current_speed: float = 0
 var last_attack: float = -1000000
+
+var eye_noises
 
 
 @export var attack_cooldown: float = 1
@@ -41,6 +47,7 @@ var current_state = State.IDLE
 const debug: bool = false
 
 func _ready():
+	noises.play()
 	health.connect("entity_died", _on_health_entity_died)
 	health.connect("taken_damage", _on_health_taken_damage)
 	follow_range.connect("body_entered", _start_follow_player)
@@ -134,6 +141,7 @@ func state_attack():
 				print("cahnge sprites position...")
 			if _can_attack():
 				print("attacking...")
+				attack_sound.play()
 				animation_player.play("attack")
 				last_attack = Time.get_ticks_msec()
 			else:
@@ -142,6 +150,7 @@ func state_attack():
 func state_hurt():
 	if not is_taking_damage:
 		is_taking_damage = true
+		damage_sound.play()
 		animated_sprite.play("hurt")
 		print(str(owner) + " HURT")
 	elif not animated_sprite.is_playing():
@@ -152,6 +161,8 @@ func state_dead():
 	if not is_dead:
 		is_dead = true
 		animation_player.play("death")
+		death_sound.play()
+		noises.stop()
 
 # movement and logic
 func _physics_process(delta):

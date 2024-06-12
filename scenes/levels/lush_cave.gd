@@ -4,6 +4,8 @@ extends "res://scripts/levels/level_controller.gd"
 @onready var tile_map = $TileMap
 
 func _ready():
+	var soundtrack = $AudioStreamPlayer2D
+	soundtrack.play()
 	show_secrets.collision_mask = 1 << 4-1
 	show_secrets.collision_layer = 0
 	show_secrets.connect("body_entered", _show_secrets)
