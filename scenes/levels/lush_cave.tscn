@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dnfi3kl42odwo"]
+[gd_scene load_steps=12 format=3 uid="uid://dnfi3kl42odwo"]
 
 [ext_resource type="TileSet" uid="uid://di6twf0fhokdg" path="res://assets/Tilesets/night.tres" id="1_bc2oy"]
 [ext_resource type="Script" path="res://scenes/levels/lush_cave.gd" id="1_csx1n"]

@@ -40,8 +40,8 @@ func playerChangeJumpVelocity(newValue: float):
 
 func resetGame():
 	Engine.set_time_scale(1)
-	newGame.emit()
 	player_health.reset()
+	newGame.emit()
 
 func updateGUi():
 	updateUi.emit()
