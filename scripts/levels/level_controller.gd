@@ -5,6 +5,7 @@ signal nextLevel
 
 var controller: SceneController
 @export var end_level: Area2D
+@onready var soundtrack = $AudioStreamPlayer2D
 
 func _ready():
 	if end_level == null:
