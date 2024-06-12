@@ -36,6 +36,7 @@ layout_mode = 2
 [node name="CheckButton" type="CheckButton" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+button_pressed = true
 text = "Sound"
 
 [node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
@@ -57,6 +58,7 @@ layout_mode = 2
 size_flags_vertical = 4
 tooltip_text = "Volume"
 step = 1.0
+value = 20.0
 
 [node name="BackButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2

@@ -438,15 +438,19 @@ libraries = {
 [node name="attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_h0vk5")
 volume_db = -20.0
+bus = &"Sfx"
 
 [node name="damage" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_2bdr5")
 volume_db = -20.0
+bus = &"Sfx"
 
 [node name="noises" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("13_3jscb")
 volume_db = -20.0
+bus = &"Sfx"
 
 [node name="death" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_2bdr5")
 volume_db = -20.0
+bus = &"Sfx"

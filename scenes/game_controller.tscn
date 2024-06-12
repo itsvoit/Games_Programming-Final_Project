@@ -7,4 +7,5 @@
 script = ExtResource("1_fx51l")
 
 [node name="PlayerHealth" parent="." instance=ExtResource("2_r1r53")]
-health = 100.0
+max_health = 25.0
+health = 25.0

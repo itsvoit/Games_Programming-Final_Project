@@ -18,10 +18,9 @@ var is_changing_scenes = false
 
 func _ready():
 	timer.connect("timeout", _on_timer_timeout)
-	level1 = level1Packed.instantiate()
-	level2 = level2Packed.instantiate()
-	level3 = level3Packed.instantiate()
+	GameController.connect("newGame", _reset_game)
 	
+	level1 = level1Packed.instantiate()
 	level1.init(self)
 	level1.connect("nextLevel", nextLevel)
 	add_child(level1)
@@ -56,14 +55,17 @@ func nextLevel() -> bool:
 	currentLevelIdx += 1
 	match currentLevelIdx:
 		1:
+			level1 = level1Packed.instantiate()
 			level1.init(self)
 			level1.connect("nextLevel", nextLevel)
 			add_child(level1)
 		2:
+			level2 = level2Packed.instantiate()
 			level2.init(self)
 			level2.connect("nextLevel", nextLevel)
 			call_deferred("add_child", level2)
 		3:
+			level3 = level3Packed.instantiate()
 			level3.init(self)
 			level3.connect("nextLevel", nextLevel)
 			call_deferred("add_child", level3)
@@ -74,3 +76,7 @@ func nextLevel() -> bool:
 func _on_timer_timeout():
 	is_changing_scenes = false
 	print("timeout")
+
+func _reset_game():
+	currentLevelIdx = 0
+	nextLevel()

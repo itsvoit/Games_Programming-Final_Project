@@ -12,10 +12,11 @@ signal died
 @onready var death_sound = $death
 @onready var attack_sound = $attack
 @onready var dash_sound = $dash
+@onready var death_timer = $DeathTimer
 
 const SPEED = 200.0
 const ATTACK_SPEED_DEBUFF = 150.0
-const JUMP_VELOCITY = -300.0
+var jump_velocity = -400.0
 const DASH_STRENGTH = 2000
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
@@ -23,10 +24,12 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var current_speed = 0
 var is_attacking = false
 var is_taking_damage = false
+var is_dead = false
 
 
 func _ready():
 	GameController.connect("playerDie", _died)
+	GameController.connect("playerChangedJumpVelocity", _change_jump_velocity)
 	hitbox.collision_layer = 1 << 5-1  # deal damage on layer 5
 	hurtbox.collision_mask = 1 << 2-1  # get hit on layer 2
 	collision_layer = 1 << 4-1  # get recognised on layer 4
@@ -34,13 +37,15 @@ func _ready():
 
 
 func _physics_process(delta):
+	if is_dead:
+		return
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
 	
 	# Handle jump.
 	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+		velocity.y = jump_velocity
 	
 	# Get the input direction and handle the movement/deceleration
 	var direction = Input.get_axis("move_left", "move_right")
@@ -96,7 +101,14 @@ func attack_anim_finished():
 	is_attacking = false
 
 func _died():
+	is_dead = true
+	animation_player.play("death")
 	death_sound.play()
-	pass
-	# other died code
-	# animation
+	death_timer.start()
+	Engine.set_time_scale(0.4)
+
+func _change_jump_velocity(newValue: float):
+	jump_velocity = newValue
+
+func _on_death_timer_timeout():
+	GameController.resetGame()

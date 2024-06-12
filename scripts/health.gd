@@ -42,4 +42,7 @@ func heal(value):
 	health += value
 	emit_signal("healed", value)
 	return true
-	
+
+func reset():
+	health = max_health
+
