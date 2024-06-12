@@ -2,12 +2,15 @@ extends Node
 
 signal nextLevel
 
+
 var controller: SceneController
 @export var end_level: Area2D
 
 func _ready():
 	if end_level == null:
 		return
+	var soundtrack = $AudioStreamPlayer2D
+	soundtrack.play()
 	end_level.connect("body_entered", _next_level)
 
 func init(sceneController: SceneController):

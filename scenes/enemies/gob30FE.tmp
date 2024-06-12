@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://dc5pxok3hr3fp"]
+[gd_scene load_steps=65 format=3 uid="uid://dc5pxok3hr3fp"]
 
 [ext_resource type="Script" path="res://scripts/enemy.gd" id="1_7tdle"]
 [ext_resource type="PackedScene" uid="uid://smsnbk2vtu5g" path="res://scenes/utilities/health.tscn" id="1_mhbix"]
@@ -12,7 +12,6 @@
 [ext_resource type="AudioStream" uid="uid://c4y8w01n6730t" path="res://assets/soundtrack/enemies/goblin/stock_goblin_2.mp3" id="10_uluxv"]
 [ext_resource type="AudioStream" uid="uid://bsj812utcsy38" path="res://assets/soundtrack/attack/goblin skeleton attack.mp3" id="11_3frfw"]
 [ext_resource type="AudioStream" uid="uid://bh1unkrf60owq" path="res://assets/soundtrack/enemies/goblin/stock_goblin.mp3" id="12_gakn1"]
-[ext_resource type="AudioStream" uid="uid://duht3l48g2y6i" path="res://assets/soundtrack/enemies/goblin/goblin deth.mp3" id="13_a73wq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afcsd"]
 size = Vector2(20, 35)
@@ -524,18 +523,13 @@ libraries = {
 
 [node name="noises" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("10_uluxv")
-volume_db = -10.0
 
 [node name="attack" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_3frfw")
-volume_db = -20.0
 
 [node name="damage" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_gakn1")
-volume_db = -20.0
 
 [node name="death" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("13_a73wq")
-volume_db = -20.0
 
 [connection signal="body_exited" from="FollowArea" to="." method="_on_follow_area_body_exited"]

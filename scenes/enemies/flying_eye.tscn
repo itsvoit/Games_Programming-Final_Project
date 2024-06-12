@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://buvdpfc43fjrn"]
+[gd_scene load_steps=56 format=3 uid="uid://buvdpfc43fjrn"]
 
 [ext_resource type="Texture2D" uid="uid://bpuuexlt8gqu7" path="res://assets/enemies/Flying eye/Attack.png" id="1_c4g6n"]
 [ext_resource type="PackedScene" uid="uid://smsnbk2vtu5g" path="res://scenes/utilities/health.tscn" id="1_e4k7s"]
@@ -8,6 +8,10 @@
 [ext_resource type="Texture2D" uid="uid://6au051jfdi3x" path="res://assets/enemies/Flying eye/Flight.png" id="4_nbtnk"]
 [ext_resource type="PackedScene" uid="uid://buexi1thq5fbt" path="res://scenes/utilities/hitbox.tscn" id="5_1jw2n"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="6_0xijf"]
+[ext_resource type="AudioStream" uid="uid://cjyp8hix1lcq" path="res://assets/soundtrack/enemies/eye/eye_deth.mp3" id="9_o6krl"]
+[ext_resource type="AudioStream" uid="uid://c2cm48ykshmao" path="res://assets/soundtrack/enemies/eye/stock_eye.mp3" id="9_tuwhf"]
+[ext_resource type="AudioStream" uid="uid://b4fb1i4t7f28m" path="res://assets/soundtrack/enemies/eye/eye_punch.mp3" id="11_l7iac"]
+[ext_resource type="AudioStream" uid="uid://8wckdpf154td" path="res://assets/soundtrack/enemies/eye/eye_damage.mp3" id="12_fq5sm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_axnpt"]
 size = Vector2(12, 34)
@@ -447,3 +451,19 @@ texture = SubResource("NoiseTexture2D_tunme")
 libraries = {
 "": SubResource("AnimationLibrary_i8jgb")
 }
+
+[node name="noises" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_tuwhf")
+volume_db = -20.0
+
+[node name="death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_o6krl")
+volume_db = -20.0
+
+[node name="attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_l7iac")
+volume_db = -20.0
+
+[node name="damage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_fq5sm")
+volume_db = -20.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bh2xmw3yowske"]
+[gd_scene load_steps=53 format=3 uid="uid://bh2xmw3yowske"]
 
 [ext_resource type="PackedScene" uid="uid://smsnbk2vtu5g" path="res://scenes/utilities/health.tscn" id="1_5hvg0"]
 [ext_resource type="Texture2D" uid="uid://cgwkdwxtyveak" path="res://assets/enemies/Skeleton/Attack.png" id="1_bsdr5"]
@@ -10,6 +10,9 @@
 [ext_resource type="Texture2D" uid="uid://btkj52tvpchmp" path="res://assets/enemies/Skeleton/Walk.png" id="6_qt8pq"]
 [ext_resource type="Script" path="res://scripts/hitbox.gd" id="7_gq5j1"]
 [ext_resource type="Script" path="res://scripts/hurtbox.gd" id="8_o1cai"]
+[ext_resource type="AudioStream" uid="uid://bsj812utcsy38" path="res://assets/soundtrack/attack/goblin skeleton attack.mp3" id="11_h0vk5"]
+[ext_resource type="AudioStream" uid="uid://dcvug2mv36lt2" path="res://assets/soundtrack/enemies/skeleton/skeleton-dying.mp3" id="12_2bdr5"]
+[ext_resource type="AudioStream" uid="uid://cbhccify4fg7o" path="res://assets/soundtrack/enemies/skeleton/stock_skeleton.mp3" id="13_3jscb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_th0w7"]
 size = Vector2(28, 51)
@@ -431,3 +434,19 @@ texture = SubResource("NoiseTexture2D_kfnvn")
 libraries = {
 "": SubResource("AnimationLibrary_i8jgb")
 }
+
+[node name="attack" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_h0vk5")
+volume_db = -20.0
+
+[node name="damage" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_2bdr5")
+volume_db = -20.0
+
+[node name="noises" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_3jscb")
+volume_db = -20.0
+
+[node name="death" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("12_2bdr5")
+volume_db = -20.0

@@ -16,6 +16,8 @@ func _ready():
 		end_level.disconnect("body_entered", _next_level)
 	end_level.connect("body_entered", _next_level)
 	print("Connected _next_level: " + str(end_level.is_connected("body_entered", _next_level)))
+	var soundtrack = $AudioStreamPlayer2D
+	soundtrack.play()
 	show_secrets.collision_mask = 1 << 4-1
 	show_secrets.collision_layer = 0
 	show_secrets.connect("body_entered", _show_secrets)
