@@ -41,6 +41,41 @@ focus_neighbor_top = NodePath("../Options_button")
 focus_neighbor_bottom = NodePath("../Start_button")
 text = "Quit"
 
+[node name="Lore" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 612.0
+offset_top = -383.0
+offset_right = 652.0
+offset_bottom = -343.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Lore"]
+layout_mode = 2
+text = "Zły nieznajomy przeklnął cię i zabrał twoją ESSE 
+(tak jakbyś studiował na przypadkowej 
+dolnośląskiej uczelni wyższej). 
+W wyniku nieszczęśliwego zbiegu 
+wydarzeń zamieniłeś się w??? 
+
+No właśnie... 
+
+Kim jesteś? Dokąd zmierzasz? 
+
+Dlaczego pozwoliłeś zabrać sobie ESSE? 
+Twoim celem jest odnalezienie tego przyjemniaczka
+ i odzyskanie chęci do życia. "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Loretimer" type="Timer" parent="."]
+wait_time = 10.0
+
 [connection signal="pressed" from="VBoxContainer/Start_button" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Options_button" to="." method="_on_options_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/Quit_button" to="." method="_on_quit_button_pressed"]

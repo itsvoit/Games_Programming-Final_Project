@@ -68,3 +68,17 @@ position = Vector2(838, -209)
 process_mode = 3
 stream = ExtResource("8_stc67")
 bus = &"Music"
+
+[node name="Label" type="Label" parent="."]
+offset_left = -281.0
+offset_top = -408.0
+offset_right = -46.0
+offset_bottom = -359.0
+text = "Jestem głodny...."
+
+[node name="Label2" type="Label" parent="."]
+offset_left = -662.0
+offset_top = -383.0
+offset_right = -427.0
+offset_bottom = -360.0
+text = "To prosze sobie coś zjeść :DDD"

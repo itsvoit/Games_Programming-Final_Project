@@ -8,6 +8,7 @@ signal playerDie
 signal playerChangedJumpVelocity(value)
 signal newGame
 signal musicValueChanged
+signal musicTurnedOn(value)
 
 @onready var player_health: Health = $PlayerHealth
 
@@ -53,11 +54,13 @@ func musicOn(isOn: bool):
 		value = lastMusicValue
 	else:
 		value = 0
-	AudioServer.set_bus_volume_db(0, value)
+	AudioServer.set_bus_volume_db(0, linear_to_db(value))
+	musicTurnedOn.emit(isOn)
 
 func changeMusicVolume(value):
 	lastMusicValue = value
 	AudioServer.set_bus_volume_db(0, linear_to_db(value))
+	musicValueChanged.emit()
 
 func getMusicValue():
 	return lastMusicValue
